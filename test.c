@@ -6,7 +6,7 @@ char testc[129] =
   "wfieowfe"
   "fwiofewq"
   "dwiaofdj"
-  "fwadwad "
+  "fwadwadx"
   "dwadwadw"
   "dwadwadw"
   "penistes"
@@ -14,12 +14,18 @@ char testc[129] =
   "wfieowfe"
   "fwiofewq"
   "dwiaofdj"
-  "fwadwad "
+  "fwadwadx"
   "dwadwadw"
   "dwadwadw"
   "penistes";
 
 char * bla = "hi";
+
+//Prints a message including desc and line if test==0
+void test(unsigned char * desc, int line, int test){
+  if(!test)
+    printf("Test %s at line %d failed.\n");
+}
 
 int main(){
   shelstring test = cstring_to_shelstring(testc);
@@ -34,5 +40,5 @@ int main(){
     
   puts(testc);
   //puts(NULL);
-  printf("%s\n",shelstring_to_cstring(test));
+  puts(shelstring_to_cstring(test));
 }

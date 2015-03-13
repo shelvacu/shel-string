@@ -1,0 +1,18 @@
+#include "shelstring.h"
+
+#define LEN 8
+
+#test shelint_length_from_cint_check
+int tests[LEN] = {0, 1, 5, 127,128,255,16383,16384};
+short res[LEN] = {1, 1, 1,   1,  2,  2,    2,    3};
+for(int i=0;i<LEN;i++){
+  ck_assert_int_eq(res[i],shelint_length_from_cint(tests[i]));
+ }
+
+#test general_runthrough
+char* test_cstring = "The quick brown fox jumped over the lazy dog";
+char test_binary_data[45] = "Test\0OhSHIT A NULL WHAT ARE WE TO DO\x00blarg";
+shelstring test_shelstr = cstring_to_shelstring(test_cstring);
+ck_assert_uint_eq(shelstrlen(test_shelstr),strlen(test_cstring));
+shelstring binary_shelstr = chars_to_shelstring(test_binary_data,45);
+ck_assert_uint_eq(shelstrlen(binary_shelstr),45);
